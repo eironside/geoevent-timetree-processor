@@ -15,11 +15,7 @@
     <maven.bundle.plugin.version>5.1.2</maven.bundle.plugin.version>
     <maven.resources.plugin.version>3.2.0</maven.resources.plugin.version>
     <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
-<<<<<<< HEAD
     <junit.version>4.13.2</junit.version>
-=======
-    <junit.version>4.13.1</junit.version>
->>>>>>> branch 'master' of https://github.com/eironside/geoevent-timetree-processor.git
     <contact.address>eironside@esri.com</contact.address>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.build.propertiesEncoding>ISO-8859-1</project.build.propertiesEncoding>
