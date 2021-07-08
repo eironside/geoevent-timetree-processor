@@ -4,6 +4,8 @@ This custom processor provides the capability to create a line out of a cache of
 
 This type of processor can be useful where you want to show the historical location of a vehicle over a small time window (e.g. last 5 points or minutes).
 
+NOTE: This processor is not appropriate for event streams with a large number of unique TRACK_IDs that will result in a large number of events being held in memory. When deploying this processor, ensure the system has adequate memory and monitor memory usage to ensure proper operation.
+
 ![Example](geoevent-timetree-processor.png?raw=true)
 
 ## Usage
