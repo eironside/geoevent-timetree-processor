@@ -4,8 +4,20 @@ This custom processor provides the capability to create a line out of a cache of
 
 This type of processor can be useful where you want to show the historical location of a vehicle over a small time window (e.g. last 5 points or minutes).
 
+NOTE: This processor is not appropriate for high velocity event streams or event streams with a large number of unique TRACK_IDs that will result in a large number of events being held in memory. When deploying this processor, ensure the system has adequate memory and monitor memory usage to ensure proper operation.
+
 ![Example](geoevent-timetree-processor.png?raw=true)
 
+## Usage
+
+* The following parameters are supported:
+  * `Use Event Count?` Yes will use a count to determine how many events are used to create the line. No will use a time window (no limit on the number of points used, so long as they are within the time window).
+   All events within the count or time window are added to queue and held in memory. Each track id has its own queue.
+  * `Event Window Size` specifies either the number of events to hold in the cache or the time window to use.
+  * `Event Window Time Unit` specifies the time unit for the Event Window Size value when Use Event Count?=No.
+  * `Event Window Time Field` Choose the field that the event time window will use to evaluate an event (RECEIVE_TIME, TIME_START, or TIME_END).
+  * `Clear Cache?` Should all cached events be cleared. 
+  
 <p> Examples:
 <p><b>Use Event Count = No, Event Window Size = 100 seconds, Time Field = TIME_START</b><br>These settings will create a line out of all events received in the last 100 seconds for a specific track id.
 <p><b>Use Event Count = Yes, Event Window Size = 5</b><br>These settings will create a line out of the last 5 events received for a specific track id.
@@ -35,16 +47,5 @@ This component is not officially supported as an Esri product. The source code i
 ## Contributing
 
 Esri welcomes contributions from anyone and everyone. Please see our [guidelines for contributing](https://github.com/esri/contributing).
-
-## Usage
-
-* The following parameters are supported:
-  * `Use Event Count?` Yes will use a count to determine how many events are used to create the line. No will use a time window (no limit on the number of points used, so long as they are within the time window).
-   All events within the count or time window are added to queue and held in memory. Each track id has its own queue.
-  * `Event Window Size` specifies either the number of events to hold in the cache or the time window to use.
-  * `Event Window Time Unit` specifies the time unit for the Event Window Size value when Use Event Count?=No.
-  * `Event Window Time Field` Choose the field that the event time window will use to evaluate an event (RECEIVE_TIME, TIME_START, or TIME_END).
-  * `Clear Cache?` Should all cached events be cleared. 
-  
 
 
